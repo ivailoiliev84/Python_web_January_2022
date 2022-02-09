@@ -1,3 +1,6 @@
+import datetime
+
+from django.contrib.auth.models import User
 from django.db import models
 from django.core.validators import MinLengthValidator
 
@@ -78,6 +81,11 @@ class Profile(models.Model):
         null=True,
         blank=True,
     )
+    user_profile = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        primary_key=True,
+    )
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
@@ -123,6 +131,10 @@ class Pet(models.Model):
         on_delete=models.CASCADE,
     )
 
+    @property
+    def age(self):
+        return datetime.datetime.now().year - self.day_of_birth.year
+
     class Meta:
         unique_together = ('user_profile', 'name')
 
@@ -163,8 +175,3 @@ class PetPhoto(models.Model):
     like = models.IntegerField(
         default=0,
     )
-
-
-
-
-

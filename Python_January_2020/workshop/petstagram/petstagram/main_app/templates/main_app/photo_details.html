@@ -1,0 +1,37 @@
+{% extends 'base/base.html' %}>
+
+
+{% block content %}
+    <div class="container">
+    <div class="d-flex">
+        <div class="d-inline p-2 w-50">
+            <!-- Image -->
+            <img src="https://images.unsplash.com/photo-1623387641168-d9803ddd3f35?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGV0c3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                 class="w-100 rounded mx-auto d-block" alt="Photo description">
+        </div>
+        <div class="d-inline p-2 w-50">
+        {% for pet in pet_photo.tagged_pet.all %}
+            <!-- Info for First Pet -->
+            <div class="d-flex justify-content-around">
+                <h5><u>Type:</u> {{ pet.type }}</h5>
+                <h5><u>Name:</u> {{ pet.name }}</h5>
+                {% if pet_photo.date_of_birth %}
+                <h5><u>Age:</u> {{ pet.age }}</h5>
+                {% endif %}
+            </div>
+        {% endfor %}
+            <!-- Info for Second Pet -->
+
+            <!-- Description -->
+            <p class="mt-2">Description: {{ pet_photo.description }}</p>
+            <!-- Likes Button -->
+            <a href="{% url 'like_photo' pet_photo.id %}"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+            <!-- Likes Counter -->
+            <p class="mt-2">Likes: {{ pet_photo.like }}</p>
+            <!-- Buttons -->
+            <a href="#" class="btn btn-primary">Edit</a>
+            <a href="#" class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
