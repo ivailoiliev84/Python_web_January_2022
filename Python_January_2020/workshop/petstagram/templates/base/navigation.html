@@ -5,21 +5,22 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'home' %}">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Add Pet</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Add Photo</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'profile details' %}">Profile</a>
-            </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'create pet' %}">Add Pet</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'create photo' %}">Add Photo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile details' %}">Profile</a>
+                </li>
         </ul>
     </div>
 

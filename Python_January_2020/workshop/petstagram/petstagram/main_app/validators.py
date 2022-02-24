@@ -1,3 +1,5 @@
+import datetime
+
 from django.core.exceptions import ValidationError
 
 
@@ -15,3 +17,12 @@ def validator_file_max_size_in_mb(max_size):
             raise ValidationError("Max file size is %sMB" % str(max_size))
 
     return validate_image
+
+
+def date_range_validator(value):
+    start_date = datetime.date(1920, 1, 1)
+    end_data = datetime.datetime.now()
+    if start_date < value < end_data:
+        raise ValidationError("Incorrect data")
+    return value
+

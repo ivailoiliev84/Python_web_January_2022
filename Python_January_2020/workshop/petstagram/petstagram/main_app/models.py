@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.core.validators import MinLengthValidator
 
-from petstagram.main_app.validators import validator_only_letters, validator_file_max_size_in_mb
+from petstagram.main_app.validators import validator_only_letters, validator_file_max_size_in_mb, date_range_validator
 
 """
 The user must provide the following information in their profile:
@@ -40,8 +40,8 @@ class Profile(models.Model):
         validators=(
             MinLengthValidator(FIRST_NAME_MIN_LENGTH),
             validator_only_letters,
-
         )
+
 
     )
 
@@ -58,6 +58,9 @@ class Profile(models.Model):
     date_of_birth = models.DateField(
         null=True,
         blank=True,
+        validators=(
+            date_range_validator,
+        )
     )
 
     description = models.TextField(
@@ -81,11 +84,7 @@ class Profile(models.Model):
         null=True,
         blank=True,
     )
-    user_profile = models.OneToOneField(
-        User,
-        on_delete=models.CASCADE,
-        primary_key=True,
-    )
+
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'

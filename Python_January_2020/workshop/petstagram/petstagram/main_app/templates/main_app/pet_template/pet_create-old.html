@@ -14,7 +14,6 @@
 </head>
 
 <body>
-
 <!-- Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom:2%">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -22,74 +21,61 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-
         <ul class="navbar-nav">
-             {% if user_profile %}
             <li class="nav-item">
-                <!-- Link to Home Page -->
-                <a class="nav-link" href="{% url 'home' %}">Home</a>
+                <a class="nav-link" href="#">Home</a>
             </li>
             <li class="nav-item">
-                <!-- Link to Dashboard Page -->
-                <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+                <a class="nav-link" href="#">Dashboard</a>
             </li>
             <li class="nav-item">
-                <!-- Link to Profile Page -->
-                <a class="nav-link" href="{% url 'profile details' %}">Profile</a>
+                <a class="nav-link" href="#">Add Pet</a>
             </li>
-            {% else %}
-             <li class="nav-item">
-                <!-- Link to Home Page -->
-                <a class="nav-link" href="{% url 'home' %}">Home</a>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Add Photo</a>
             </li>
-            {% endif %}
+            <li class="nav-item">
+                <a class="nav-link" href="#">Profile</a>
+            </li>
         </ul>
-
     </div>
 </nav>
 <!-- End Navigation Bar -->
 
 <div class="container">
-    <div class="jumbotron parent">
-        <img style="width: 100%"
-             src="https://activepets.co.za/web/ap-content/uploads/2019/08/Active-pets-dogs-and-cats.png" alt="">
-        <div class="absolute">
-            <h1 class="display-4">Welcome to Petstagram</h1>
-            <p class="lead">Share your pets photos.</p>
-            <hr class="my-4">
-            <div class="inner cover">
-                <h1 class="cover-heading"></h1>
-                <div class="row">
+    <h1 class="text-center">Add new pet photo</h1>
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
 
-                     {% if user_profile %}
-                            <!-- Button to show if profile created -->
-                            <div class="col-lg-6">
-                                <p class="lead">
-                                    <a href="{% url 'dashboard' %}" class="btn btn-lg btn-secondary">Enter</a></p>
-                            </div>
-                        {% else %}
-
-                            <!-- Button to show if profile is NOT created -->
-                            <div class="col-lg-6">
-                                <p class="lead">
-                                    <a href="{% url 'create profile' %}" class="btn btn-lg btn-secondary">Create Profile</a>
-                                </p>
-                            </div>
-                        {% endif %}
-
+            <!-- Form for Adding Pet -->
+            <form method="post" action="../profile_template/profile_details.html">
+                <div class="form-group">
+                    <label for="name">Pet Name</label>
+                    <input type="text" class="form-control" name="first_name" placeholder="Enter name"
+                           id="name"/>
                 </div>
-            </div>
+                <div class="form-group">
+                    <label for="type_animal" class="col-form-label">Type:
+                    <select class="form-select">
+                        <option value="first">Cat</option>
+                        <option value="second">Dog</option>
+                        <option value="third">Mouse</option>
+                    </select></label>
+                </div>
+                <div class="form-group">
+                    <label for="age">Day of Birth:</label>
+                    <input type="date" class="form-control" name="age" placeholder=""
+                           id="age"/>
+                </div>
+
+                <button class="btn btn-primary mt-2" type="submit">Create</button>
+            </form>
+            <!-- End Form for Adding Pet -->
         </div>
+        <div class="col-lg-3"></div>
     </div>
 </div>
-
-<!-- Page Footer -->
-<footer class="fixed-bottom card-footer ">
-    <div>@2022 Python Web Basics Workshop at SoftUni</div>
-</footer>
-<!-- End Page Footer -->
-
-</body>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -100,7 +86,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
         integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
         crossorigin="anonymous"></script>
+</body>
 
 </html>
-
-
